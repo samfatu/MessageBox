@@ -20,9 +20,9 @@ public class FileParser {
             }
         }
 
-        for (Message m : this.messages) {
+        /*for (Message m : this.messages) {
             System.out.println(m.getContent());
-        }
+        }*/
     }
 
     public void readUsersFile() {
@@ -36,8 +36,8 @@ public class FileParser {
             }
         }
 
-        for (User u : this.users) {
+        /*for (User u : this.users) {
             System.out.println(u.getUserName());
-        }
+        }*/
     }
 }

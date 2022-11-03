@@ -2,6 +2,7 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 
 public class Crypo {
     private final byte[] secretKey = "9mng6517".getBytes(StandardCharsets.UTF_8);
@@ -27,7 +28,12 @@ public class Crypo {
         return this.cipher.doFinal(text);
     }
 
-    public String hash() {
-        return null;
+    public byte[] hash(byte[] text) throws Exception {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        return digest.digest(text);
+    }
+
+    public boolean isHashesEqual(byte[] first, byte[] second) throws Exception {
+        return new String(this.hash(first)).equals(new String(this.hash(second)));
     }
 }
