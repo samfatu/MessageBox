@@ -1,3 +1,4 @@
+import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 public class User {
@@ -26,6 +27,14 @@ public class User {
     }
 
     public byte[] convertToByteArray() {
+        /*int length = this.userName.length() + this.password.length + 3;
+        return ByteBuffer.allocate(length)
+                .put(this.userName.getBytes(StandardCharsets.UTF_8))
+                .put((byte) 31)
+                .put(this.password)
+                .put("/n".getBytes(StandardCharsets.UTF_8))
+                .array();
+         */
         String object = this.userName + (char) 31 + this.password + "\n";
         return object.getBytes(StandardCharsets.UTF_8);
     }

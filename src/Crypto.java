@@ -3,15 +3,16 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.Base64;
 
-public class Crypo {
+public class Crypto {
     private final byte[] secretKey = "9mng6517".getBytes(StandardCharsets.UTF_8);
     private final byte[] iv = "a76nb5h9".getBytes(StandardCharsets.UTF_8);
     private SecretKeySpec secretKeySpec;
     private IvParameterSpec ivSpec;
     private Cipher cipher;
 
-    public Crypo() {
+    public Crypto() {
         this.secretKeySpec = new SecretKeySpec(this.secretKey, "DES");
         this.ivSpec = new IvParameterSpec(iv);
     }
@@ -34,6 +35,14 @@ public class Crypo {
     }
 
     public boolean isHashesEqual(byte[] first, byte[] second) throws Exception {
-        return new String(this.hash(first)).equals(new String(this.hash(second)));
+        return new String(hash(first)).equals(new String(hash(second)));
+    }
+
+    public static String encode(byte[] data) {
+        return Base64.getEncoder().encodeToString(data);
+    }
+
+    public static byte[] decoder(String data) {
+        return Base64.getDecoder().decode(data);
     }
 }

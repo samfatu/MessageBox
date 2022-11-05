@@ -1,3 +1,4 @@
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class FileParser {
@@ -7,6 +8,9 @@ public class FileParser {
     public FileParser() {
         this.messages = new ArrayList<>();
         this.users = new ArrayList<>();
+
+        readUsersFile();
+        readMessagesFile();
     }
 
     public void readMessagesFile() {
@@ -16,7 +20,7 @@ public class FileParser {
         for (String line : lines) {
             String[] messageProperties = line.split("[\\x1F]"); // x1F == 31 in decimal
             if (messageProperties.length == 4) {
-                this.messages.add(new Message(messageProperties[0], messageProperties[1], messageProperties[2], messageProperties[3]));
+                messages.add(new Message(messageProperties[0], messageProperties[1], messageProperties[2], messageProperties[3]));
             }
         }
 
@@ -39,5 +43,49 @@ public class FileParser {
         /*for (User u : this.users) {
             System.out.println(u.getUserName());
         }*/
+    }
+
+    public ArrayList<Message> getMessages() {
+        return messages;
+    }
+
+    public ArrayList<User> getUsers() {
+        return users;
+    }
+
+    public boolean isMessageExistsWithCodeAndUserName(String code, String userName) {
+        for (Message message : this.getMessages()) {
+            if (code.equals(message.getId()) && userName.equals(message.getUserName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Message getMessageWithCode(String code) {
+        for (Message message : this.getMessages()) {
+            if (code.equals(message.getId())) {
+                return message;
+            }
+        }
+        return null;
+    }
+
+    public boolean isUserExistsWithUserName(String userName) {
+        for (User user : this.getUsers()) {
+            if (userName.equals(user.getUserName())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public User getUserWithUserName(String userName) {
+        for (User user : this.getUsers()) {
+            if (userName.equals(user.getUserName())) {
+                return user;
+            }
+        }
+        return null;
     }
 }
