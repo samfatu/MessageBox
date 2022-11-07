@@ -1,26 +1,11 @@
-import java.nio.charset.StandardCharsets;
 
 public class MessageBox {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         FileParser parser = new FileParser();
         Crypto crypto = new Crypto();
 
-        for (Message m : parser.getMessages()) {
-            System.out.println(m.getUserName() + new String(crypto.decrypt(Crypto.decoder(m.getContent()))));
-        }
-
-        for (User u : parser.getUsers()) {
-            System.out.println(u.getUserName());
-        }
-
-
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                new MainView(parser, crypto);
-            }
-        });
-
+        javax.swing.SwingUtilities.invokeLater(() -> new MainView(parser, crypto));
 
        /* byte[] encrypted = crypo.encrypt("Hello World!".getBytes(StandardCharsets.UTF_8));
 

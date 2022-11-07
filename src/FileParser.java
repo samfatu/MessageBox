@@ -1,4 +1,3 @@
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 public class FileParser {
@@ -23,10 +22,6 @@ public class FileParser {
                 messages.add(new Message(messageProperties[0], messageProperties[1], messageProperties[2], messageProperties[3]));
             }
         }
-
-        /*for (Message m : this.messages) {
-            System.out.println(m.getContent());
-        }*/
     }
 
     public void readUsersFile() {
@@ -39,10 +34,6 @@ public class FileParser {
                 this.users.add(new User(userProperties[0], userProperties[1]));
             }
         }
-
-        /*for (User u : this.users) {
-            System.out.println(u.getUserName());
-        }*/
     }
 
     public ArrayList<Message> getMessages() {
@@ -51,6 +42,16 @@ public class FileParser {
 
     public ArrayList<User> getUsers() {
         return users;
+    }
+
+    public String[] getAllUsernames() {
+        String[] usernames = new String[this.users.size()];
+
+        for (int i = 0; i < this.users.size(); i++) {
+            usernames[i] = this.users.get(i).getUserName();
+        }
+
+        return usernames;
     }
 
     public boolean isMessageExistsWithCodeAndUserName(String code, String userName) {
@@ -87,5 +88,33 @@ public class FileParser {
             }
         }
         return null;
+    }
+
+    public boolean isMessageCodeUnique(String code) {
+        for (Message message : this.getMessages()) {
+            if (message.getId().equals(code)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean isUserNameUnique(String userName) {
+        for (User user : this.getUsers()) {
+            if (user.getUserName().equals(userName)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void addUser(User newUser) {
+        this.users.add(newUser);
+    }
+
+    public void addMessage(Message newMessage) {
+        this.messages.add(newMessage);
     }
 }

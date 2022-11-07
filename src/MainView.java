@@ -10,8 +10,7 @@ public class MainView extends JFrame {
     private JPanel contentPanel;
     private BoxLayout boxLayout;
     private JLabel title;
-    private JButton accessButton;
-    private JButton messageButton;
+    private JButton accessButton, messageButton, signUpButton;
 
     public MainView(FileParser parser, Crypto crypto) throws HeadlessException {
         this.parser = parser;
@@ -37,18 +36,22 @@ public class MainView extends JFrame {
         title = new JLabel("Welcome To Message Box!", SwingConstants.CENTER);
         accessButton = new JButton("Access");
         messageButton = new JButton("Leave a Message");
+        signUpButton = new JButton("Sign Up");
 
         title.setMaximumSize(new Dimension(300, 50));
         accessButton.setMaximumSize(new Dimension(100, 50));
         messageButton.setMaximumSize(new Dimension(150, 50));
+        signUpButton.setMaximumSize(new Dimension(100, 50));
 
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         accessButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         messageButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        signUpButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         contentPanel.add(title);
         contentPanel.add(accessButton);
         contentPanel.add(messageButton);
+        contentPanel.add(signUpButton);
 
         mainFrame.pack();
         mainFrame.setSize(420, 420);
@@ -57,6 +60,7 @@ public class MainView extends JFrame {
 
         accessButton.addActionListener(e -> this.openAccessMessageView());
         messageButton.addActionListener(e -> this.openLeaveMessageView());
+        signUpButton.addActionListener(e -> this.openSignUpUserView());
     }
 
     private void openAccessMessageView() {
@@ -69,4 +73,8 @@ public class MainView extends JFrame {
         mainFrame.dispatchEvent(new WindowEvent(this.mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 
+    private void openSignUpUserView() {
+        new SignUpUserView(this.parser, this.crypto);
+        mainFrame.dispatchEvent(new WindowEvent(this.mainFrame, WindowEvent.WINDOW_CLOSING));
+    }
 }

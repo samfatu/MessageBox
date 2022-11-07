@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
+import java.util.Objects;
 
 public class MessageView extends JFrame {
     private FileParser parser;
@@ -35,6 +36,7 @@ public class MessageView extends JFrame {
 
         // Content area
         textArea = new JTextArea(content);
+        textArea.setEditable(false);
         scrollPane = new JScrollPane (textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPane.setBounds(20, 60, 560, 200);
 

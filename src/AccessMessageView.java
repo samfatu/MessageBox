@@ -79,7 +79,7 @@ public class AccessMessageView extends JFrame {
         viewButton.setBounds(80, 180, 140, 40);
 
         mainPageButton = new JButton("Main Page");
-        mainPageButton.setBounds(240, 180, 140, 40);
+        mainPageButton.setBounds(235, 180, 140, 40);
 
         resetButton = new JButton("Reset Fields");
         resetButton.setBounds(390, 180, 140, 40);
