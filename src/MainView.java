@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 
@@ -8,7 +7,6 @@ public class MainView extends JFrame {
     private Crypto crypto;
     private JFrame mainFrame;
     private JPanel contentPanel;
-    private BoxLayout boxLayout;
     private JLabel title;
     private JButton accessButton, messageButton, signUpButton;
 
@@ -22,31 +20,20 @@ public class MainView extends JFrame {
 
         // Initialize content panel placed in main frame
         contentPanel = new JPanel();
-
-        boxLayout = new BoxLayout(contentPanel, BoxLayout.Y_AXIS);
-
-        contentPanel.setLayout(boxLayout);
-        // 10px padding to each edge
-        Border padding = BorderFactory.createEmptyBorder(100, 10, 10, 10);
-        contentPanel.setBorder(padding);
+        contentPanel.setLayout(null);
 
         mainFrame.setContentPane(contentPanel);
 
         // View components
         title = new JLabel("Welcome To Message Box!", SwingConstants.CENTER);
-        accessButton = new JButton("Access");
+        title.setFont(new Font("Serif", Font.BOLD, 16));
+        title.setBounds(60, 120, 300, 30);
+        accessButton = new JButton("Access a Message");
+        accessButton.setBounds(140, 160, 140, 40);
         messageButton = new JButton("Leave a Message");
+        messageButton.setBounds(140, 200, 140, 40);
         signUpButton = new JButton("Sign Up");
-
-        title.setMaximumSize(new Dimension(300, 50));
-        accessButton.setMaximumSize(new Dimension(100, 50));
-        messageButton.setMaximumSize(new Dimension(150, 50));
-        signUpButton.setMaximumSize(new Dimension(100, 50));
-
-        title.setAlignmentX(Component.CENTER_ALIGNMENT);
-        accessButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        messageButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        signUpButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        signUpButton.setBounds(140, 240, 140, 40);
 
         contentPanel.add(title);
         contentPanel.add(accessButton);

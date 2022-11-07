@@ -58,6 +58,7 @@ public class SignUpUserView extends JFrame {
         passwordVisibleButton = new JButton(showPassword);
         passwordVisibleButton.setBounds(370, 163, 24, 24);
         passwordVisibleButton.setBorder(BorderFactory.createEmptyBorder());
+        passwordVisibleButton.setContentAreaFilled(false);
 
         confirmPasswordLabel = new JLabel( "*Confirm Password");
         confirmPasswordLabel.setBounds(60, 190, 300, 30);
@@ -67,6 +68,7 @@ public class SignUpUserView extends JFrame {
         confirmPasswordVisibleButton = new JButton(showPassword);
         confirmPasswordVisibleButton.setBounds(370, 223, 24, 24);
         confirmPasswordVisibleButton.setBorder(BorderFactory.createEmptyBorder());
+        confirmPasswordVisibleButton.setContentAreaFilled(false);
 
         contentPanel.add(passwordLabel);
         contentPanel.add(passwordField);
