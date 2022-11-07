@@ -26,14 +26,14 @@ public class MainView extends JFrame {
 
         // View components
         title = new JLabel("Welcome To Message Box!", SwingConstants.CENTER);
-        title.setFont(new Font("Serif", Font.BOLD, 16));
-        title.setBounds(60, 120, 300, 30);
+        title.setFont(new Font(null, Font.BOLD, 20));
+        title.setBounds(60, 100, 300, 30);
         accessButton = new JButton("Access a Message");
-        accessButton.setBounds(140, 160, 140, 40);
+        accessButton.setBounds(120, 140, 180, 40);
         messageButton = new JButton("Leave a Message");
-        messageButton.setBounds(140, 200, 140, 40);
+        messageButton.setBounds(120, 190, 180, 40);
         signUpButton = new JButton("Sign Up");
-        signUpButton.setBounds(140, 240, 140, 40);
+        signUpButton.setBounds(120, 240, 180, 40);
 
         contentPanel.add(title);
         contentPanel.add(accessButton);

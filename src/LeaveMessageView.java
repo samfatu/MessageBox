@@ -67,6 +67,7 @@ public class LeaveMessageView extends JFrame {
         messagePasswordVisibleButton = new JButton(showPassword);
         messagePasswordVisibleButton.setBounds(510, 63, 24, 24);
         messagePasswordVisibleButton.setBorder(BorderFactory.createEmptyBorder());
+        messagePasswordVisibleButton.setContentAreaFilled(false);
 
         messagePasswordConfirmationLabel = new JLabel( "*Confirm Password");
         messagePasswordConfirmationLabel.setBounds(300, 100, 200, 30);
@@ -76,6 +77,7 @@ public class LeaveMessageView extends JFrame {
         confirmMessagePasswordVisibleButton = new JButton(showPassword);
         confirmMessagePasswordVisibleButton.setBounds(510, 133, 24, 24);
         confirmMessagePasswordVisibleButton.setBorder(BorderFactory.createEmptyBorder());
+        confirmMessagePasswordVisibleButton.setContentAreaFilled(false);
 
         contentPanel.add(messagePasswordLabel);
         contentPanel.add(messagePasswordField);

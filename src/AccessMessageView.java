@@ -46,6 +46,7 @@ public class AccessMessageView extends JFrame {
         messagePasswordVisibleButton = new JButton(showPassword);
         messagePasswordVisibleButton.setBounds(510, 63, 24, 24);
         messagePasswordVisibleButton.setBorder(BorderFactory.createEmptyBorder());
+        messagePasswordVisibleButton.setContentAreaFilled(false);
 
         contentPanel.add(messageCodeNameLabel);
         contentPanel.add(messageCodeNameField);
@@ -67,6 +68,7 @@ public class AccessMessageView extends JFrame {
         userPasswordVisibleButton = new JButton(showPassword);
         userPasswordVisibleButton.setBounds(510, 133, 24, 24);
         userPasswordVisibleButton.setBorder(BorderFactory.createEmptyBorder());
+        userPasswordVisibleButton.setContentAreaFilled(false);
 
         contentPanel.add(userNameLabel);
         contentPanel.add(userNameField);

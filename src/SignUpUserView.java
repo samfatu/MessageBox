@@ -37,6 +37,7 @@ public class SignUpUserView extends JFrame {
 
         // View components
         title = new JLabel("Sign Up", SwingConstants.CENTER);
+        title.setFont(new Font(null, Font.BOLD, 20));
         title.setBounds(60, 30, 300, 30);
 
         contentPanel.add(title);
@@ -86,9 +87,9 @@ public class SignUpUserView extends JFrame {
 
         // Bottom buttons
         registerButton = new JButton("Sign Up");
-        registerButton.setBounds(140, 300, 140, 40);
+        registerButton.setBounds(120, 300, 180, 40);
         mainPageButton = new JButton("Return to Main Page");
-        mainPageButton.setBounds(140, 350, 140, 40);
+        mainPageButton.setBounds(120, 350, 180, 40);
 
         contentPanel.add(registerButton);
         contentPanel.add(mainPageButton);
