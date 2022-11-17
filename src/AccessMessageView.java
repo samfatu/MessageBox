@@ -23,7 +23,7 @@ public class AccessMessageView extends JFrame {
 
         // Initialize Main Frame
         mainFrame = new JFrame();
-        mainFrame.setTitle("Message Box");
+        mainFrame.setTitle("Access Message");
         mainFrame.setResizable(false);
 
         // Initialize content panel placed in main frame
@@ -148,7 +148,7 @@ public class AccessMessageView extends JFrame {
             if (this.isValidPasswords(messageCode, userName)) {
                 new MessageView(this.parser,
                         this.crypto,
-                        new String(crypto.decrypt(Crypto.decoder(this.parser.getMessageWithCode(messageCode).getContent()))));
+                        new String(crypto.decrypt(Crypto.decode(this.parser.getMessageWithCode(messageCode).getContent()))));
                 mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
             } else {
                 this.errorLabel.setText("Passwords are not correct.");
@@ -172,7 +172,7 @@ public class AccessMessageView extends JFrame {
         byte[] givenMessagePassword = crypto.hash(new String(messagePasswordField.getPassword()).getBytes(StandardCharsets.UTF_8));
         byte[] givenUserPassword = crypto.hash(new String(userPasswordField.getPassword()).getBytes(StandardCharsets.UTF_8));
 
-        return Arrays.equals(givenMessagePassword, Crypto.decoder(message.getPassword())) &&
-                Arrays.equals(givenUserPassword, Crypto.decoder(user.getPassword()));
+        return Arrays.equals(givenMessagePassword, Crypto.decode(message.getPassword())) &&
+                Arrays.equals(givenUserPassword, Crypto.decode(user.getPassword()));
     }
 }

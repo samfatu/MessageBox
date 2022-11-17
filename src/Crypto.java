@@ -34,15 +34,11 @@ public class Crypto {
         return digest.digest(text);
     }
 
-    public boolean isHashesEqual(byte[] first, byte[] second) throws Exception {
-        return new String(hash(first)).equals(new String(hash(second)));
-    }
-
     public static String encode(byte[] data) {
         return Base64.getEncoder().encodeToString(data);
     }
 
-    public static byte[] decoder(String data) {
+    public static byte[] decode(String data) {
         return Base64.getDecoder().decode(data);
     }
 }

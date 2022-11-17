@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
-import java.util.Objects;
 
 public class MessageView extends JFrame {
     private FileParser parser;
@@ -21,7 +20,7 @@ public class MessageView extends JFrame {
         mainFrame = new JFrame();
         mainFrame.setTitle("View Message");
         mainFrame.setResizable(false);
-        System.out.println(content);
+
         // Initialize content panel placed in main frame
         contentPanel = new JPanel();
         contentPanel.setLayout(null);

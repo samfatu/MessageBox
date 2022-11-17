@@ -170,6 +170,8 @@ public class LeaveMessageView extends JFrame {
 
         if (!this.parser.isMessageCodeUnique(messageCode)) {
             this.errorLabel.setText("Given message code must be unique!");
+        } else if (!messageCode.matches("[0-9]+")) {
+            this.errorLabel.setText("Given message code must be consist of only numbers!");
         } else {
             Message message = new Message(
                     messageCode,

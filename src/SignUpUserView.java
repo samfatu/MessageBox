@@ -51,7 +51,7 @@ public class SignUpUserView extends JFrame {
         contentPanel.add(userNameField);
 
         // Passwords area
-        passwordLabel = new JLabel("*Message Password");
+        passwordLabel = new JLabel("*User Password");
         passwordLabel.setBounds(60, 130, 300, 30);
         passwordField = new JPasswordField();
         passwordField.setBounds(60, 160, 300, 30);
@@ -153,6 +153,8 @@ public class SignUpUserView extends JFrame {
 
         if (!this.parser.isUserNameUnique(userName)) {
             this.errorLabel.setText("Given username must be unique!");
+        } else if (userName.contains(" ")) {
+            this.errorLabel.setText("Username can not contain space!");
         } else {
             User user = new User(
                     userName,
