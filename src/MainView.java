@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
 
 public class MainView extends JFrame {
     private FileParser parser;
@@ -17,6 +16,7 @@ public class MainView extends JFrame {
         mainFrame = new JFrame();
         mainFrame.setTitle("Message Box");
         mainFrame.setResizable(false);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Initialize content panel placed in main frame
         contentPanel = new JPanel();
@@ -51,17 +51,20 @@ public class MainView extends JFrame {
     }
 
     private void openAccessMessageView() {
+        mainFrame.dispose();
         new AccessMessageView(this.parser, this.crypto);
-        mainFrame.dispatchEvent(new WindowEvent(this.mainFrame, WindowEvent.WINDOW_CLOSING));
+        //mainFrame.dispatchEvent(new WindowEvent(this.mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 
     private void openLeaveMessageView() {
+        mainFrame.dispose();
         new LeaveMessageView(this.parser, this.crypto);
-        mainFrame.dispatchEvent(new WindowEvent(this.mainFrame, WindowEvent.WINDOW_CLOSING));
+        //mainFrame.dispatchEvent(new WindowEvent(this.mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 
     private void openSignUpUserView() {
+        mainFrame.dispose();
         new SignUpUserView(this.parser, this.crypto);
-        mainFrame.dispatchEvent(new WindowEvent(this.mainFrame, WindowEvent.WINDOW_CLOSING));
+        //mainFrame.dispatchEvent(new WindowEvent(this.mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 }

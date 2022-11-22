@@ -20,6 +20,7 @@ public class MessageView extends JFrame {
         mainFrame = new JFrame();
         mainFrame.setTitle("View Message");
         mainFrame.setResizable(false);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Initialize content panel placed in main frame
         contentPanel = new JPanel();
@@ -56,7 +57,8 @@ public class MessageView extends JFrame {
     }
 
     private void backToMainPagePressed() {
+        mainFrame.dispose();
         new MainView(this.parser, this.crypto);
-        mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+        //mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 }

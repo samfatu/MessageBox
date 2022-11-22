@@ -29,6 +29,7 @@ public class SignUpUserView extends JFrame {
         mainFrame = new JFrame();
         mainFrame.setTitle("Sign Up");
         mainFrame.setResizable(false);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Initialize content panel placed in main frame
         contentPanel = new JPanel();
@@ -133,8 +134,9 @@ public class SignUpUserView extends JFrame {
     }
 
     private void openMainPageView() {
+        mainFrame.dispose();
         new MainView(this.parser, this.crypto);
-        mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+        //mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 
     private void signUp() throws Exception {
@@ -172,12 +174,14 @@ public class SignUpUserView extends JFrame {
                     "Yes Return Main Page!");
 
             if (action == 0) {
+                mainFrame.dispose();
                 new MainView(this.parser, this.crypto);
-                mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+                //mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
             } else {
                 this.userNameField.setText("");
                 this.passwordField.setText("");
                 this.confirmPasswordField.setText("");
+                this.errorLabel.setText("");
             }
         }
     }

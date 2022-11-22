@@ -25,6 +25,7 @@ public class AccessMessageView extends JFrame {
         mainFrame = new JFrame();
         mainFrame.setTitle("Access Message");
         mainFrame.setResizable(false);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Initialize content panel placed in main frame
         contentPanel = new JPanel();
@@ -136,8 +137,9 @@ public class AccessMessageView extends JFrame {
     }
 
     private void openMainView() {
+        mainFrame.dispose();
         new MainView(this.parser, this.crypto);
-        mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+        //mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 
     private void openMessage() throws Exception {
@@ -146,10 +148,11 @@ public class AccessMessageView extends JFrame {
 
         if (this.parser.isMessageExistsWithCodeAndUserName(messageCode, userName) && this.parser.isUserExistsWithUserName(userName)) {
             if (this.isValidPasswords(messageCode, userName)) {
+                mainFrame.dispose();
                 new MessageView(this.parser,
                         this.crypto,
                         new String(crypto.decrypt(Crypto.decode(this.parser.getMessageWithCode(messageCode).getContent()))));
-                mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+                //mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
             } else {
                 this.errorLabel.setText("Passwords are not correct.");
             }

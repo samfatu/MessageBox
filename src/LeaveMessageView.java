@@ -33,6 +33,7 @@ public class LeaveMessageView extends JFrame {
         mainFrame = new JFrame();
         mainFrame.setTitle("Leave a Message");
         mainFrame.setResizable(false);
+        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Initialize content panel placed in main frame
         contentPanel = new JPanel();
@@ -150,8 +151,9 @@ public class LeaveMessageView extends JFrame {
     }
 
     private void openMainPage() {
+        mainFrame.dispose();
         new MainView(this.parser, this.crypto);
-        mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+        //mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
     }
 
     private void leaveMessage() throws Exception {
@@ -191,14 +193,16 @@ public class LeaveMessageView extends JFrame {
                             "Yes Return Main Page!");
 
             if (action == 0) {
+                mainFrame.dispose();
                 new MainView(this.parser, this.crypto);
-                mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
+                //mainFrame.dispatchEvent(new WindowEvent(mainFrame, WindowEvent.WINDOW_CLOSING));
             } else {
                 this.usersBox.setSelectedIndex(0);
                 this.messagePasswordField.setText("");
                 this.confirmMessagePasswordField.setText("");
                 this.messageCodeNameField.setText("");
                 this.messageTextArea.setText("");
+                this.errorLabel.setText("");
             }
         }
     }
