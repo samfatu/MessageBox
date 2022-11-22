@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.WindowEvent;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Objects;
@@ -118,7 +117,7 @@ public class SignUpUserView extends JFrame {
             passwordField.setEchoChar((char) 0);
             SwingUtilities.invokeLater(() -> passwordVisibleButton.setIcon(hidePassword));
         } else {
-            passwordField.setEchoChar('●');
+            passwordField.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
             SwingUtilities.invokeLater(() -> passwordVisibleButton.setIcon(showPassword));
         }
     }
@@ -128,7 +127,7 @@ public class SignUpUserView extends JFrame {
             confirmPasswordField.setEchoChar((char) 0);
             SwingUtilities.invokeLater(() -> confirmPasswordVisibleButton.setIcon(hidePassword));
         } else {
-            confirmPasswordField.setEchoChar('●');
+            confirmPasswordField.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
             SwingUtilities.invokeLater(() -> confirmPasswordVisibleButton.setIcon(showPassword));
         }
     }

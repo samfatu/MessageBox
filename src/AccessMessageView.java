@@ -121,7 +121,7 @@ public class AccessMessageView extends JFrame {
             messagePasswordField.setEchoChar((char) 0);
             SwingUtilities.invokeLater(() -> messagePasswordVisibleButton.setIcon(hidePassword));
         } else {
-            messagePasswordField.setEchoChar('●');
+            messagePasswordField.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
             SwingUtilities.invokeLater(() -> messagePasswordVisibleButton.setIcon(showPassword));
         }
     }
@@ -131,7 +131,7 @@ public class AccessMessageView extends JFrame {
             userPasswordField.setEchoChar((char) 0);
             SwingUtilities.invokeLater(() -> userPasswordVisibleButton.setIcon(hidePassword));
         } else {
-            userPasswordField.setEchoChar('●');
+            userPasswordField.setEchoChar((Character) UIManager.get("PasswordField.echoChar"));
             SwingUtilities.invokeLater(() -> userPasswordVisibleButton.setIcon(showPassword));
         }
     }
